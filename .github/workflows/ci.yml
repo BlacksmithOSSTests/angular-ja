@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-staging
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,7 +29,7 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: useblacksmith/setup-bazel@sd-integration
         with:
           bazelisk-cache: true
           disk-cache: true

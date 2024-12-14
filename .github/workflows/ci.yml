@@ -20,7 +20,7 @@ jobs:
       - run: yarn lint
       - run: yarn test
   build-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-staging
     steps:
       - uses: actions/checkout@v4
         with:

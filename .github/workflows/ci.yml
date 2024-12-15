@@ -36,6 +36,23 @@ jobs:
           repository-cache: true
       - run: yarn install
       - run: yarn build
+  build-ubuntu-cache:
+    runs-on: blacksmith-staging
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: yarn
+      - uses: useblacksmith/setup-bazel@v1
+        with:
+          bazelisk-cache: true
+          disk-cache: true
+          repository-cache: true
+      - run: yarn install
+      - run: yarn build
   # build-windows:
   #   runs-on: windows-latest
   #   steps:

@@ -29,12 +29,14 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
-      - uses: useblacksmith/setup-bazel@v2
+      - uses: useblacksmith/setup-bazel@v1
         with:
           bazelisk-cache: true
           disk-cache: true
           repository-cache: true
           cache-version: 2
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
       - name: Create bazel cache directory
         run: mkdir -p /home/runner/.cache/bazel/_bazel_runner
   #     - run: yarn install

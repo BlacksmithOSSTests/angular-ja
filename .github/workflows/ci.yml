@@ -34,7 +34,6 @@ jobs:
           bazelisk-cache: true
           disk-cache: true
           repository-cache: true
-          cache-version: 2
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
       - name: Create bazel cache directory

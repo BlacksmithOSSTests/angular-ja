@@ -29,34 +29,17 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
-      - uses: bazel-contrib/setup-bazel@0.9.1
+      - uses: useblacksmith/setup-bazel@v2
         with:
           bazelisk-cache: true
           disk-cache: true
           repository-cache: true
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
+          cache-version: 3
+
       - name: Create bazel cache directory
-        run: mkdir -p /home/runner/.cache/bazel/_bazel_runner
-  #     - run: yarn install
-  #     - run: yarn build
-  # build-ubuntu-cache:
-  #   runs-on: blacksmith
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #       with:
-  #         submodules: true
-  #     - uses: actions/setup-node@v4
-  #       with:
-  #         node-version-file: '.node-version'
-  #         cache: yarn
-  #     - uses: useblacksmith/setup-bazel@v1
-  #       with:
-  #         bazelisk-cache: true
-  #         disk-cache: true
-  #         repository-cache: true
-  #     - run: yarn install
-  #     - run: yarn build
+        run: ls -al ~/.cache
+      - run: yarn install
+      - run: yarn build
   # build-windows:
   #   runs-on: windows-latest
   #   steps:

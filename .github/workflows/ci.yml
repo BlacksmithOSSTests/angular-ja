@@ -29,17 +29,17 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
-      - uses: useblacksmith/setup-bazel@mount-sd
+      - uses: useblacksmith/setup-bazel@v2
         with:
           bazelisk-cache: true
           disk-cache: true
           repository-cache: true
-          cache-version: 4
+          cache-version: 2
 
       - name: Create bazel cache directory
         run: ls -al ~/.cache
-      # - run: yarn install
-      # - run: yarn build
+      - run: yarn install
+      - run: yarn build
   # build-windows:
   #   runs-on: windows-latest
   #   steps:

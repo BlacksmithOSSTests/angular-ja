@@ -7,7 +7,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,7 +20,7 @@ jobs:
       - run: yarn lint
       - run: yarn test
   build-ubuntu:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith
     steps:
       - uses: actions/checkout@v4
         with:
@@ -29,11 +29,15 @@ jobs:
         with:
           node-version-file: '.node-version'
           cache: yarn
-      - uses: bazel-contrib/setup-bazel@0.8.5
+      - uses: useblacksmith/setup-bazel@fix/sync-with-stickydisk
         with:
           bazelisk-cache: true
           disk-cache: true
           repository-cache: true
+          cache-version: 2
+
+      - name: Create bazel cache directory
+        run: ls -al ~/.cache
       - run: yarn install
       - run: yarn build
   # build-windows:
